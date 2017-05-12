@@ -1,6 +1,6 @@
 # Jarvis
 
-[![CircleCI](https://circleci.com/gh/kilbiller/jarvis.svg?style=shield&circle-token=aefb7d59b512e8ea98b5e24f931f84aa40f4f083)](https://circleci.com/gh/kilbiller/jarvis)
+[![CircleCI](https://circleci.com/gh/kilbiller/jarvis.svg?style=shield&circle-token=c8ce445694b31462f5a5f5e3de43125e6c7fd87b)](https://circleci.com/gh/kilbiller/jarvis)
 [![codecov](https://codecov.io/gh/kilbiller/jarvis/branch/master/graph/badge.svg)](https://codecov.io/gh/kilbiller/jarvis)
 
 A simple but powerful way to validate data in PHP.
