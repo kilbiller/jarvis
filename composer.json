@@ -1,0 +1,23 @@
+{
+    "name": "kilbiller/jarvis",
+	"description": "A simple but powerful way to validate data in PHP.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rémy Peru",
+            "email": "peru.remy@gmail.com"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "kahlan/kahlan": "^3.1"
+    },
+	"autoload": {
+        "psr-4": {"Jarvis\\": "src/"}
+    },
+	"scripts": {
+		"test": "kahlan",
+		"test:coverage": "kahlan --coverage=4 --clover=clover.xml"
+	}
+}
