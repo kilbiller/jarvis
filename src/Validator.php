@@ -2,7 +2,6 @@
 
 namespace Jarvis;
 
-use Closure;
 use Exception;
 
 function prop($key, $collection) {
@@ -55,9 +54,9 @@ class Validator {
 
 	public function validate($array) {
 		foreach ($this->__rules as $rule) {
-			$closure = Closure::fromCallable($rule['rule']);
+			$callable = $rule['rule'];
 
-			if (!array_key_exists($rule['key'], $this->__errors) && !$closure(prop($rule['key'], $array), $array)) {
+			if (!array_key_exists($rule['key'], $this->__errors) && !$callable(prop($rule['key'], $array), $array)) {
 				$this->__addError($rule['key'], $rule['message']);
 			}
 		}
