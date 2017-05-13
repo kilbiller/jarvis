@@ -9,12 +9,18 @@
             "email": "peru.remy@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+		"php": ">=7.0",
+        "kilbiller/fphp": "^0.0.9"
+	},
     "require-dev": {
         "kahlan/kahlan": "^3.1"
     },
 	"autoload": {
-        "psr-4": {"Jarvis\\": "src/"}
+        "psr-4": {"Jarvis\\": "src/"},
+		"files": [
+			"src/rules/between.php"
+		]
     },
 	"scripts": {
 		"test": "kahlan",
