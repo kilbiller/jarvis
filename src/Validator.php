@@ -52,11 +52,11 @@ class Validator {
 		return $this;
 	}
 
-	public function validate($array) {
+	public function validate($data) {
 		foreach ($this->__rules as $rule) {
 			$callable = $rule['rule'];
 
-			if (!array_key_exists($rule['key'], $this->__errors) && !$callable(prop($rule['key'], $array), $array)) {
+			if (!array_key_exists($rule['key'], $this->__errors) && !$callable(prop($rule['key'], $data), $data)) {
 				$this->__addError($rule['key'], $rule['message']);
 			}
 		}
@@ -64,7 +64,11 @@ class Validator {
 		return (empty($this->__errors));
 	}
 
-	public function getErrors() {
+	public function getErrors($data = null) {
+		if ($data) {
+			$this->validate($data);
+		}
+
 		return $this->__errors;
 	}
 }
