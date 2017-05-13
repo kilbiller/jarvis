@@ -2,6 +2,7 @@
 
 use Jarvis\Validator;
 use Jarvis\RuleSet;
+use function Jarvis\rules\{isNumber, between};
 
 describe('Validator', function () {
 	describe('addRule', function () {
@@ -45,6 +46,19 @@ describe('Validator', function () {
             expect($validator->getErrors())->toBe([]);
         });
 
+		it('should validate with multiple rules', function () {
+            $array = ['age' => 34, 'godson' => ['firstname' => 'Jonathan']];
+
+            $validator = (new Validator())
+            ->addRule('age', [isNumber(), between(0, 100)])
+            ->addRule('godson.firstname', function ($firstname) {
+                return $firstname === 'Jonathan';
+            }, '${key} is not Jonathan.');
+
+            expect($validator->validate($array))->toBe(true);
+            expect($validator->getErrors())->toBe([]);
+        });
+
         it('should fail to validate', function () {
 			$array = ['age' => 34, 'godson' => ['firstname' => 'Jonathan']];
 
@@ -55,6 +69,19 @@ describe('Validator', function () {
 
             expect($validator->validate($array))->toBe(false);
             expect($validator->getErrors())->toBe(['zombie' => 'zombie is not valid.']);
+        });
+
+		it('should fail to validate with multiple rules', function () {
+            $array = ['age' => 34, 'godson' => ['firstname' => 'Jonathan']];
+
+            $validator = (new Validator())
+            ->addRule('age', [isNumber(), between(50, 100)])
+            ->addRule('godson.firstname', function ($firstname) {
+                return $firstname === 'Jonathan';
+            }, '${key} is not Jonathan.');
+
+            expect($validator->validate($array))->toBe(false);
+            expect($validator->getErrors())->toBe(['age' => 'age is not valid.']);
         });
     });
 

@@ -48,10 +48,18 @@ class Validator {
 
 	public function validate($data) {
 		foreach ($this->__rules as $rule) {
-			$callable = $rule['rule'];
+			if (!is_array($rule['rule'])) {
+				$rule['rule'] = [$rule['rule']];
+			}
 
-			if (!array_key_exists($rule['key'], $this->__errors) && !$callable(prop($rule['key'], $data), $data)) {
-				$this->__addError($rule['key'], $rule['message']);
+			foreach($rule['rule'] as $callable) {
+				if (!array_key_exists($rule['key'], $this->__errors)) {
+					if (!$callable(prop($rule['key'], $data), $data)) {
+						$this->__addError($rule['key'], $rule['message']);
+					}
+				} else {
+					break;
+				}
 			}
 		}
 
