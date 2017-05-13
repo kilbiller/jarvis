@@ -19,7 +19,16 @@
 	"autoload": {
         "psr-4": {"Jarvis\\": "src/"},
 		"files": [
-			"src/rules/between.php"
+			"src/rules/between.php",
+			"src/rules/isBoolean.php",
+			"src/rules/isDate.php",
+			"src/rules/isNumber.php",
+			"src/rules/isPositive.php",
+			"src/rules/isUppercase.php",
+			"src/rules/lengthBetween.php",
+			"src/rules/matchRegex.php",
+			"src/rules/notEmpty.php",
+			"src/rules/noWhiteSpace.php"
 		]
     },
 	"scripts": {

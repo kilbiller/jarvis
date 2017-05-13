@@ -55,6 +55,19 @@ $validator->validate($data2); // -> false
 $validator->getErrors(); // -> ['age' => 'age is not valid.', 'firstname' => 'firstname is not Jonathan.']
 ```
 
+### Built-in rules
+
+- between(min, max)
+- isBoolean()
+- isDate(format = 'Y-m-d')
+- isNumber()
+- isPositive()
+- isUppercase()
+- lengthBetween(min, max)
+- matchRegex(regex)
+- notEmpty()
+- noWhiteSpace()
+
 ### Todo
 
 - Accept objects

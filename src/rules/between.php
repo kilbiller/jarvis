@@ -5,7 +5,7 @@ namespace Jarvis\rules;
 use function fphp\curry;
 
 /**
- * Test if values is between minimum and maximum
+ * Test if value is between minimum and maximum
  *
  * @param int $min minimum
  * @param int $max maximum
