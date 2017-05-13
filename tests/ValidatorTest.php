@@ -48,12 +48,10 @@ describe('Validator', function () {
         it('should fail to validate', function () {
 			$array = ['age' => 34, 'godson' => ['firstname' => 'Jonathan']];
 
-			$ruleset = (new RuleSet())
+			$validator = (new Validator())
             ->addRule('zombie', function ($age) {
                 return is_int($age);
             });
-
-            $validator = new Validator($ruleset);
 
             expect($validator->validate($array))->toBe(false);
             expect($validator->getErrors())->toBe(['zombie' => 'zombie is not valid.']);
@@ -64,12 +62,10 @@ describe('Validator', function () {
         it('should also validate data if data is passed as first argument', function () {
 			$array = ['age' => 34, 'godson' => ['firstname' => 'Jonathan']];
 
-			$ruleset = (new RuleSet())
+			$validator = (new Validator())
             ->addRule('zombie', function ($age) {
                 return is_int($age);
             });
-
-            $validator = new Validator($ruleset);
 
             expect($validator->getErrors($array))->toBe(['zombie' => 'zombie is not valid.']);
 		});

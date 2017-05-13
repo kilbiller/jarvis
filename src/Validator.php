@@ -23,12 +23,6 @@ class Validator {
 	private $__rules = [];
 	private $__errors = [];
 
-	function __construct($ruleset = null) {
-		if ($ruleset instanceof RuleSet) {
-			$this->__rules = $ruleset->getRules();
-		}
-	}
-
 	private function __addError($key, $message) {
 		$message = str_replace ('${key}', $key, $message);
 		$this->__errors[$key] = $message;
