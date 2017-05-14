@@ -22,6 +22,7 @@
 			"src/rules/between.php",
 			"src/rules/isBoolean.php",
 			"src/rules/isDate.php",
+			"src/rules/isJson.php",
 			"src/rules/isNumber.php",
 			"src/rules/isPositive.php",
 			"src/rules/isUppercase.php",

@@ -61,6 +61,7 @@ $validator->getErrors(); // -> ['age' => 'age is not valid.', 'firstname' => 'fi
 - between(min, max)
 - isBoolean()
 - isDate(format = 'Y-m-d')
+- isJson()
 - isNumber()
 - isPositive()
 - isUppercase()
