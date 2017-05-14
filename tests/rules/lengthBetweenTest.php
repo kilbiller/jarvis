@@ -8,7 +8,16 @@ describe('lengthBetween', function () {
 		$array = ['age' => 'CODE01'];
 
 		$validator = (new Validator())
-		->addRule('age', lengthBetween(0, 15));
+		->addRule('age', lengthBetween(2, 15));
+
+		expect($validator->validate($array))->toBe(true);
+	});
+
+	it('should validate null when min is null', function () {
+		$array = ['age' => null];
+
+		$validator = (new Validator())
+		->addRule('age', lengthBetween(null, 15));
 
 		expect($validator->validate($array))->toBe(true);
 	});

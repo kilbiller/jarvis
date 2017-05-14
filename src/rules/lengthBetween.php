@@ -13,6 +13,11 @@ use function fphp\curry;
  */
 function lengthBetween($min, $max) {
 	$lengthBetween = function ($min, $max, $value) {
+		// Validate successfully if min is 0 or null
+		if ($min === null) {
+			return true;
+		}
+
 		$length = strlen($value);
 		return $min < $length && $length < $max;
 	};
