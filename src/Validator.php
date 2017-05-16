@@ -2,22 +2,8 @@
 
 namespace Jarvis;
 
+use function fphp\prop;
 use Exception;
-
-function prop($key, $collection) {
-	$keys = explode('.', $key);
-	$result = $collection;
-
-	foreach ($keys as $key) {
-		if (isset($result[$key])) {
-			$result = $result[$key];
-		} else {
-			return null;
-		}
-	}
-
-	return $result;
-}
 
 class Validator {
 	private $__rules = [];

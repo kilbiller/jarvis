@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "103241279e72c1f86520ecf8e7d55561",
+    "content-hash": "325d7ae2ce65928ce434b03dd56e46f4",
     "packages": [
         {
             "name": "kilbiller/fphp",
-            "version": "v0.0.9",
+            "version": "v0.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kilbiller/fphp.git",
-                "reference": "9755c5e4c892b5ea70df9acb992f4e07a06f364f"
+                "reference": "6d88feab0b116e0029204cc52e734a7b8f229940"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kilbiller/fphp/zipball/9755c5e4c892b5ea70df9acb992f4e07a06f364f",
-                "reference": "9755c5e4c892b5ea70df9acb992f4e07a06f364f",
+                "url": "https://api.github.com/repos/kilbiller/fphp/zipball/6d88feab0b116e0029204cc52e734a7b8f229940",
+                "reference": "6d88feab0b116e0029204cc52e734a7b8f229940",
                 "shasum": ""
             },
             "require": {
@@ -53,6 +53,7 @@
                     "src/negate.php",
                     "src/none.php",
                     "src/not.php",
+                    "src/prop.php",
                     "src/reduce.php",
                     "src/reject.php",
                     "src/reverse.php",
@@ -73,7 +74,7 @@
                 }
             ],
             "description": "A set of auto-curried immutable data-last functions for PHP. Inspired by lodash/fp.",
-            "time": "2017-03-16T18:26:47+00:00"
+            "time": "2017-05-16T17:26:29+00:00"
         }
     ],
     "packages-dev": [
