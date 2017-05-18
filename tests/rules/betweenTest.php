@@ -31,4 +31,13 @@ describe('between', function () {
 
 		expect($validator->validate($array))->toBe(true);
 	});
+
+	it('should be inclusive', function () {
+		$validator = (new Validator())
+		->addRule('age', \Jarvis\rules\between(0, 30));
+
+		expect($validator->validate(['age' => 0]))->toBe(true);
+		expect($validator->validate(['age' => 30]))->toBe(true);
+	});
+
 });

@@ -13,7 +13,7 @@ use function fphp\curry;
  */
 function between($min, $max) {
 	$between = function ($min, $max, $value) {
-		return $min < $value && $value < $max;
+		return $min <= $value && $value <= $max;
 	};
 
 	return curry($between)($min, $max);
