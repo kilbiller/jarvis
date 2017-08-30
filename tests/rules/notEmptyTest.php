@@ -22,4 +22,13 @@ describe('notEmpty', function () {
 		expect($validator->validate($array))->toBe(false);
 		expect($validator->getErrors())->toBe(['age' => 'age is not valid.']);
 	});
+
+	it('should count false as not empty', function () {
+		$array = ['age' => false];
+
+		$validator = (new Validator())
+		->addRule('age', notEmpty());
+
+		expect($validator->validate($array))->toBe(true);
+	});
 });

@@ -11,7 +11,7 @@ use function fphp\curry;
  */
 function notEmpty() {
 	$notEmpty = function ($value) {
-		return !empty($value);
+		return $value === false || !empty($value);
 	};
 
 	return curry($notEmpty);
