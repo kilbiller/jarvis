@@ -20,13 +20,48 @@ describe('Validator', function () {
 					return is_int($age);
 				});
 			})->toThrow();
+		});
+
+		it('should fail when key is not set', function () {
+			$validator = (new Validator())
+				->addRule('age', function ($age) {
+					return is_int($age);
+				});
+
+			$data = ['godson' => ['firstname' => 'Jonathan']];
+			
+			expect($validator->validate($data))->toBe(false);
+			expect($validator->getErrors())->toBe(['age' => 'age is not valid.']);
+		});
+	});
+
+	describe('addOptionalRule', function () {
+        it('should throw an exception', function () {
+			expect(function () {
+				$validator = (new Validator())
+				->addOptionalRule(null, function ($age) {
+					return is_int($age);
+				});
+			})->toThrow();
 
 			expect(function () {
 				$validator = (new Validator())
-				->addRule('age', function ($age) {
+				->addOptionalRule('', function ($age) {
 					return is_int($age);
-				}, 12);
+				});
 			})->toThrow();
+		});
+
+		it('should pass when key is not set', function () {
+			$validator = (new Validator())
+				->addOptionalRule('age', function ($age) {
+					return is_int($age);
+				});
+
+			$data = ['godson' => ['firstname' => 'Jonathan']];
+			
+			expect($validator->validate($data))->toBe(true);
+			expect($validator->getErrors())->toBe([]);
 		});
 	});
 
@@ -50,7 +85,8 @@ describe('Validator', function () {
             $array = ['age' => 34, 'godson' => ['firstname' => 'Jonathan']];
 
             $validator = (new Validator())
-            ->addRule('age', [isNumber(), between(0, 100)])
+			->addRule('age', [isNumber(), between(0, 100)])
+			->addOptionalRule('height', [isNumber(), between(0, 100)])
             ->addRule('godson.firstname', function ($firstname) {
                 return $firstname === 'Jonathan';
             }, '${key} is not Jonathan.');

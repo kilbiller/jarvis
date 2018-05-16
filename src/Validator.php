@@ -6,42 +6,65 @@ use function fphp\prop;
 use Exception;
 
 class Validator {
-	private $__rules = [];
-	private $__errors = [];
+	private $rules = [];
+	private $errors = [];
 
-	private function __addError($key, $message) {
+	private function addError($key, $message) {
 		$message = str_replace ('${key}', $key, $message);
-		$this->__errors[$key] = $message;
+		$this->errors[$key] = $message;
 	}
 
-	public function addRule($key, $rule, $message = '${key} is not valid.') {
-		if (!is_string($key)) {
-			throw new Exception('Param key should be a string.');
-		}
-
+	public function addRule(string $key, $rule, string $message = '${key} is not valid.') {
 		if (empty($key)) {
 			throw new Exception('Param key should not be empty.');
 		}
 
-		if (!is_string($message)) {
-			throw new Exception('Param message should be a string.');
+		$this->rules[] = [
+			'key' => $key,
+			'rule' => $rule,
+			'message' => $message,
+			'options' => [
+				'optional' => false,
+			],
+		];
+
+		return $this;
+	}
+
+	public function addOptionalRule(string $key, $rule, string $message = '${key} is not valid.') {
+		if (empty($key)) {
+			throw new Exception('Param key should not be empty.');
 		}
 
-		$this->__rules[] = ['key' => $key, 'rule' => $rule, 'message' => $message];
+		$this->rules[] = [
+			'key' => $key,
+			'rule' => $rule,
+			'message' => $message,
+			'options' => [
+				'optional' => true,
+			],
+		];
 
 		return $this;
 	}
 
 	public function validate($data) {
-		foreach ($this->__rules as $rule) {
+		foreach ($this->rules as $rule) {
 			if (!is_array($rule['rule'])) {
 				$rule['rule'] = [$rule['rule']];
 			}
 
 			foreach($rule['rule'] as $callable) {
-				if (!array_key_exists($rule['key'], $this->__errors)) {
-					if (!$callable(prop($rule['key'], $data), $data)) {
-						$this->__addError($rule['key'], $rule['message']);
+				// We only keep the first error for a specific key
+				if (!array_key_exists($rule['key'], $this->errors)) {
+					// If rule is optional and value doesn't exist, then everything is fine
+					if ($rule['options']['optional'] && !array_key_exists($rule['key'], $data)) {
+						break;
+					} else {
+						// Validate
+						if (!$callable(prop($rule['key'], $data), $data)) {
+							$this->addError($rule['key'], $rule['message']);
+						}
 					}
 				} else {
 					break;
@@ -49,7 +72,7 @@ class Validator {
 			}
 		}
 
-		return (empty($this->__errors));
+		return (empty($this->errors));
 	}
 
 	public function getErrors($data = null) {
@@ -57,6 +80,6 @@ class Validator {
 			$this->validate($data);
 		}
 
-		return $this->__errors;
+		return $this->errors;
 	}
 }

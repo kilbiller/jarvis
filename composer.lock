@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "46b9e7f491fb61b95a5723e968184e15",
+    "content-hash": "da3da2f575d8fc51718f2e401e6c79d1",
     "packages": [
         {
             "name": "kilbiller/fphp",
@@ -85,20 +85,20 @@
     "packages-dev": [
         {
             "name": "kahlan/kahlan",
-            "version": "3.1.18",
+            "version": "4.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kahlan/kahlan.git",
-                "reference": "598c3682ca47fef162398a7acd706acd4fe39798"
+                "reference": "8e5780f5c52f57f5bc75126facef7923eace97bc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kahlan/kahlan/zipball/598c3682ca47fef162398a7acd706acd4fe39798",
-                "reference": "598c3682ca47fef162398a7acd706acd4fe39798",
+                "url": "https://api.github.com/repos/kahlan/kahlan/zipball/8e5780f5c52f57f5bc75126facef7923eace97bc",
+                "reference": "8e5780f5c52f57f5bc75126facef7923eace97bc",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.4"
+                "php": ">=5.5"
             },
             "require-dev": {
                 "squizlabs/php_codesniffer": "^2.7"
@@ -135,7 +135,7 @@
                 "testing",
                 "unit test"
             ],
-            "time": "2017-08-12T20:37:11+00:00"
+            "time": "2018-04-22T17:58:08+00:00"
         }
     ],
     "aliases": [],
