@@ -111,13 +111,12 @@ describe('Validator', function () {
             $array = ['age' => 34, 'godson' => ['firstname' => 'Jonathan']];
 
             $validator = (new Validator())
-            ->addRule('age', [isNumber(), between(50, 100)])
-            ->addRule('godson.firstname', function ($firstname) {
-                return $firstname === 'Jonathan';
-            }, '${key} is not Jonathan.');
+            ->addRule('age', [isNumber(), between(20, 100)])
+            ->addOptionalRule('godson.firstname', function ($firstname) {
+                return $firstname !== 'Jonathan';
+            }, '${key} is Jonathan.');
 
             expect($validator->validate($array))->toBe(false);
-            expect($validator->getErrors())->toBe(['age' => 'age is not valid.']);
         });
     });
 

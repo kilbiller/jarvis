@@ -56,18 +56,18 @@ class Validator {
 
 			foreach($rule['rule'] as $callable) {
 				// We only keep the first error for a specific key
-				if (!array_key_exists($rule['key'], $this->errors)) {
-					// If rule is optional and value doesn't exist, then everything is fine
-					if ($rule['options']['optional'] && !array_key_exists($rule['key'], $data)) {
-						break;
-					} else {
-						// Validate
-						if (!$callable(prop($rule['key'], $data), $data)) {
-							$this->addError($rule['key'], $rule['message']);
-						}
-					}
-				} else {
+				if (array_key_exists($rule['key'], $this->errors)) {
 					break;
+				}
+
+				// If rule is optional and value doesn't exist, then everything is fine
+				if ($rule['options']['optional'] && prop($rule['key'], $data) === null) {
+					break;
+				} else {
+					// Validate
+					if (!$callable(prop($rule['key'], $data), $data)) {
+						$this->addError($rule['key'], $rule['message']);
+					}
 				}
 			}
 		}
