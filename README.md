@@ -21,6 +21,7 @@ I couldn't find anything that satisfied these requirements so I made Jarvis.
 ## Api
 
 ### Validator
+
 ```
 ->addRule($key: string, $validationFunction: Function | [$validationFunction: Function], $message: string): void
 $key: Can be nested (i.e. 'user.firstname').
@@ -62,6 +63,7 @@ $validator->getErrors(); // -> ['age' => 'age is not valid.', 'firstname' => 'fi
 - isBoolean()
 - isDate(format = 'Y-m-d')
 - isJson()
+- isNull()
 - isNumber()
 - isPositive()
 - isUppercase()
@@ -69,14 +71,17 @@ $validator->getErrors(); // -> ['age' => 'age is not valid.', 'firstname' => 'fi
 - matchRegex(regex)
 - notEmpty()
 - noWhiteSpace()
+- oneOf(...$functions)
 
 ### Pro tips
 
 There is two way to apply muliple validation rules for a single key :
+
 - Use an array of validation functions -> this way you can only use a single error message
 - Call addRule multiple times with the same key -> this way you can be more precise with your error messages
 
 All function are curried so you can built-in rules without any argument rather than '\Jarvis\rules\isNumber'.
+
 ```php
 use Jarvis\Validator;
 use function Jarvis\rules\isNumber;

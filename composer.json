@@ -14,7 +14,7 @@
         "kilbiller/fphp": "^1.0.3"
 	},
     "require-dev": {
-        "kahlan/kahlan": "^4.1.3"
+        "kahlan/kahlan": "^4.1.6"
     },
 	"autoload": {
         "psr-4": {"Jarvis\\": "src/"},
@@ -23,13 +23,15 @@
 			"src/rules/isBoolean.php",
 			"src/rules/isDate.php",
 			"src/rules/isJson.php",
+			"src/rules/isNull.php",
 			"src/rules/isNumber.php",
 			"src/rules/isPositive.php",
 			"src/rules/isUppercase.php",
 			"src/rules/lengthBetween.php",
 			"src/rules/matchRegex.php",
 			"src/rules/notEmpty.php",
-			"src/rules/noWhiteSpace.php"
+			"src/rules/noWhiteSpace.php",
+			"src/rules/oneOf.php"
 		]
     },
 	"scripts": {

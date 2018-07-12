@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "da3da2f575d8fc51718f2e401e6c79d1",
+    "content-hash": "aa58e1bfb620f909bce110d48a36dcba",
     "packages": [
         {
             "name": "kilbiller/fphp",
@@ -85,16 +85,16 @@
     "packages-dev": [
         {
             "name": "kahlan/kahlan",
-            "version": "4.1.3",
+            "version": "4.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kahlan/kahlan.git",
-                "reference": "8e5780f5c52f57f5bc75126facef7923eace97bc"
+                "reference": "219ebb43cd1617f8bf0df506c01efe89d955167d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kahlan/kahlan/zipball/8e5780f5c52f57f5bc75126facef7923eace97bc",
-                "reference": "8e5780f5c52f57f5bc75126facef7923eace97bc",
+                "url": "https://api.github.com/repos/kahlan/kahlan/zipball/219ebb43cd1617f8bf0df506c01efe89d955167d",
+                "reference": "219ebb43cd1617f8bf0df506c01efe89d955167d",
                 "shasum": ""
             },
             "require": {
@@ -135,7 +135,7 @@
                 "testing",
                 "unit test"
             ],
-            "time": "2018-04-22T17:58:08+00:00"
+            "time": "2018-07-05T10:14:41+00:00"
         }
     ],
     "aliases": [],
