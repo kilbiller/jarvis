@@ -67,6 +67,7 @@ $validator->getErrors(); // -> ['age' => 'age is not valid.', 'firstname' => 'fi
 - isNumber()
 - isPositive()
 - isUppercase()
+- isString()
 - lengthBetween(min, max)
 - matchRegex(regex)
 - notEmpty()

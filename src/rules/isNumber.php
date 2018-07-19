@@ -5,7 +5,7 @@ namespace Jarvis\rules;
 use function fphp\curry;
 
 /**
- * Test if value is a number
+ * Test if value is number-like
  *
  * @return bool
  */
