@@ -8,13 +8,13 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - core-composer-cache-v1-{{ checksum "./composer.lock" }}
-            - core-composer-cache-v1
+            - composer-cache-v1-{{ checksum "./composer.lock" }}
+            - composer-cache-v1
       - run:
           name: "Install composer dependencies"
           command: composer install --no-interaction
       - save_cache:
-          key: core-composer-cache-v1-{{ checksum "./composer.lock" }}
+          key: composer-cache-v1-{{ checksum "./composer.lock" }}
           paths:
             - ./vendor
       - run:
