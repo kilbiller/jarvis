@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "aa58e1bfb620f909bce110d48a36dcba",
+    "content-hash": "3fb686f52a9e343bc5a2457fac706929",
     "packages": [
         {
             "name": "kilbiller/fphp",
@@ -85,23 +85,23 @@
     "packages-dev": [
         {
             "name": "kahlan/kahlan",
-            "version": "4.1.6",
+            "version": "4.7.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kahlan/kahlan.git",
-                "reference": "219ebb43cd1617f8bf0df506c01efe89d955167d"
+                "reference": "c529ef24201053ba76d3c8c3531acd76b629ce87"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kahlan/kahlan/zipball/219ebb43cd1617f8bf0df506c01efe89d955167d",
-                "reference": "219ebb43cd1617f8bf0df506c01efe89d955167d",
+                "url": "https://api.github.com/repos/kahlan/kahlan/zipball/c529ef24201053ba76d3c8c3531acd76b629ce87",
+                "reference": "c529ef24201053ba76d3c8c3531acd76b629ce87",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.5"
             },
             "require-dev": {
-                "squizlabs/php_codesniffer": "^2.7"
+                "squizlabs/php_codesniffer": "^3.4"
             },
             "bin": [
                 "bin/kahlan"
@@ -135,7 +135,7 @@
                 "testing",
                 "unit test"
             ],
-            "time": "2018-07-05T10:14:41+00:00"
+            "time": "2020-04-25T21:27:19+00:00"
         }
     ],
     "aliases": [],
@@ -146,5 +146,6 @@
     "platform": {
         "php": ">=7.0"
     },
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "1.1.0"
 }

@@ -14,7 +14,7 @@
         "kilbiller/fphp": "^1.0.3"
 	},
     "require-dev": {
-        "kahlan/kahlan": "^4.1.6"
+        "kahlan/kahlan": "^4.7.5"
     },
 	"autoload": {
         "psr-4": {"Jarvis\\": "src/"},

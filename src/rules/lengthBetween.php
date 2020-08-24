@@ -7,7 +7,7 @@ use function fphp\curry;
 /**
  * Test if value is between minimum and maximum
  *
- * @param int $min minimum
+ * @param int|null $min minimum
  * @param int $max maximum
  * @return bool
  */
@@ -19,7 +19,7 @@ function lengthBetween($min, $max) {
 		}
 
 		$length = strlen($value);
-		return $min < $length && $length < $max;
+		return $min <= $length && $length <= $max;
 	};
 
 	return curry($lengthBetween)($min, $max);

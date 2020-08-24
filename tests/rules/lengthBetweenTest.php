@@ -22,6 +22,24 @@ describe('lengthBetween', function () {
 		expect($validator->validate($array))->toBe(true);
 	});
 
+	it('should validate null when min is 0', function () {
+		$array = ['age' => null];
+
+		$validator = (new Validator())
+		->addRule('age', lengthBetween(0, 15));
+
+		expect($validator->validate($array))->toBe(true);
+	});
+
+	it('should validate hello when max is 5', function () {
+		$array = ['string' => 'hello'];
+
+		$validator = (new Validator())
+		->addRule('string', lengthBetween(0, 5));
+
+		expect($validator->validate($array))->toBe(true);
+	});
+
 	it('should fail to validate', function () {
 		$array = ['age' => 'code02'];
 
