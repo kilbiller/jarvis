@@ -6,6 +6,8 @@ namespace Jarvis\rules;
 
 use Closure;
 
+use function Jarvis\internal\stringify;
+
 /**
  * Test if value matches a regex
  *
@@ -13,6 +15,8 @@ use Closure;
  * @return Closure(mixed): bool
  */
 function matchRegex(string $regex): Closure {
-	return fn (mixed $value): bool => ($value === null || is_scalar($value))
-		&& preg_match($regex, (string) $value) === 1;
+	return function (mixed $value) use ($regex): bool {
+		$string = stringify($value);
+		return $string !== null && preg_match($regex, $string) === 1;
+	};
 }

@@ -18,6 +18,7 @@
 	"autoload": {
         "psr-4": {"Jarvis\\": "src/"},
 		"files": [
+			"src/internal/stringify.php",
 			"src/rules/between.php",
 			"src/rules/isBoolean.php",
 			"src/rules/isDate.php",

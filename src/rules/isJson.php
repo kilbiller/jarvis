@@ -6,11 +6,16 @@ namespace Jarvis\rules;
 
 use Closure;
 
+use function Jarvis\internal\stringify;
+
 /**
  * Test if value is valid json
  *
  * @return Closure(mixed): bool
  */
 function isJson(): Closure {
-	return fn (mixed $value): bool => is_scalar($value) && json_validate((string) $value);
+	return function (mixed $value): bool {
+		$string = stringify($value);
+		return $string !== null && json_validate($string);
+	};
 }
