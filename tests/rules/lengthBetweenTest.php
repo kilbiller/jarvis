@@ -40,6 +40,13 @@ describe('lengthBetween', function () {
 		expect($validator->validate($array))->toBe(true);
 	});
 
+	it('should fail to validate NAN', function () {
+		$validator = (new Validator())
+		->addRule('age', lengthBetween(0, 5));
+
+		expect($validator->validate(['age' => NAN]))->toBe(false);
+	});
+
 	it('should fail to validate', function () {
 		$array = ['age' => 'code02'];
 

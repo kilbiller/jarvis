@@ -12,5 +12,10 @@ use Closure;
  * @return Closure(mixed): bool
  */
 function notEmpty(): Closure {
-	return fn (mixed $value): bool => $value === false || !empty($value);
+	return fn (mixed $value): bool => match (true) {
+		$value === false => true,
+		// empty() warns on NAN since PHP 8.5, which is not empty
+		is_float($value) => $value !== 0.0,
+		default => !empty($value),
+	};
 }

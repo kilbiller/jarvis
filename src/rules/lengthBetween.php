@@ -6,6 +6,8 @@ namespace Jarvis\rules;
 
 use Closure;
 
+use function Jarvis\internal\stringify;
+
 /**
  * Test if value length is between minimum and maximum (inclusive)
  *
@@ -21,11 +23,12 @@ function lengthBetween(?int $min, int $max): Closure {
 		}
 
 		// A null value has a length of 0
-		if ($value !== null && !is_scalar($value)) {
+		$string = stringify($value);
+		if ($string === null) {
 			return false;
 		}
 
-		$length = strlen((string) $value);
+		$length = strlen($string);
 		return $min <= $length && $length <= $max;
 	};
 }
