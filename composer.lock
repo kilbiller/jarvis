@@ -4,116 +4,41 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3fb686f52a9e343bc5a2457fac706929",
-    "packages": [
-        {
-            "name": "kilbiller/fphp",
-            "version": "v1.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/kilbiller/fphp.git",
-                "reference": "ae48191c1be5cf608ed3e4fe1b0e11e53c1e8eea"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/kilbiller/fphp/zipball/ae48191c1be5cf608ed3e4fe1b0e11e53c1e8eea",
-                "reference": "ae48191c1be5cf608ed3e4fe1b0e11e53c1e8eea",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.0"
-            },
-            "require-dev": {
-                "consistence/coding-standard": "^2.1",
-                "kahlan/kahlan": "^3.1",
-                "squizlabs/php_codesniffer": "^3.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "fphp\\": "src/"
-                },
-                "files": [
-                    "src/utils/reflexify.php",
-                    "src/compose.php",
-                    "src/concat.php",
-                    "src/curry.php",
-                    "src/curry1.php",
-                    "src/curry2.php",
-                    "src/curry3.php",
-                    "src/curryN.php",
-                    "src/every.php",
-                    "src/filter.php",
-                    "src/find.php",
-                    "src/first.php",
-                    "src/flatMap.php",
-                    "src/flatten.php",
-                    "src/flip.php",
-                    "src/flow.php",
-                    "src/identity.php",
-                    "src/includes.php",
-                    "src/join.php",
-                    "src/last.php",
-                    "src/map.php",
-                    "src/negate.php",
-                    "src/none.php",
-                    "src/not.php",
-                    "src/prop.php",
-                    "src/reduce.php",
-                    "src/reject.php",
-                    "src/reverse.php",
-                    "src/some.php",
-                    "src/uniq.php",
-                    "src/uniqWith.php",
-                    "src/zip.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Rémy Peru",
-                    "email": "peru.remy@gmail.com"
-                }
-            ],
-            "description": "A set of auto-curried immutable data-last functions for PHP. Inspired by lodash/fp.",
-            "time": "2017-10-27T09:21:19+00:00"
-        }
-    ],
+    "content-hash": "79c65343fd415ba1f60cdce3a2cae3c6",
+    "packages": [],
     "packages-dev": [
         {
             "name": "kahlan/kahlan",
-            "version": "4.7.5",
+            "version": "6.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kahlan/kahlan.git",
-                "reference": "c529ef24201053ba76d3c8c3531acd76b629ce87"
+                "reference": "e30c6fc714c6e51e45e185ca399427951ed9a5a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kahlan/kahlan/zipball/c529ef24201053ba76d3c8c3531acd76b629ce87",
-                "reference": "c529ef24201053ba76d3c8c3531acd76b629ce87",
+                "url": "https://api.github.com/repos/kahlan/kahlan/zipball/e30c6fc714c6e51e45e185ca399427951ed9a5a1",
+                "reference": "e30c6fc714c6e51e45e185ca399427951ed9a5a1",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.5"
+                "php": ">=7.4"
             },
             "require-dev": {
-                "squizlabs/php_codesniffer": "^3.4"
+                "rector/rector": "^2.5",
+                "squizlabs/php_codesniffer": "^3.10.1"
             },
             "bin": [
                 "bin/kahlan"
             ],
             "type": "library",
             "autoload": {
-                "psr-4": {
-                    "Kahlan\\": "src/"
-                },
                 "files": [
                     "src/functions.php"
-                ]
+                ],
+                "psr-4": {
+                    "Kahlan\\": "src/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -135,17 +60,21 @@
                 "testing",
                 "unit test"
             ],
-            "time": "2020-04-25T21:27:19+00:00"
+            "support": {
+                "issues": "https://github.com/kahlan/kahlan/issues",
+                "source": "https://github.com/kahlan/kahlan/tree/6.1.3"
+            },
+            "time": "2026-10-13T04:52:52+00:00"
         }
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.0"
+        "php": ">=8.3"
     },
-    "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "platform-dev": {},
+    "plugin-api-version": "2.9.0"
 }

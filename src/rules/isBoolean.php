@@ -1,18 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Jarvis\rules;
 
-use function fphp\curry;
+use Closure;
 
 /**
  * Test if value is a boolean
  *
- * @return bool
+ * @return Closure(mixed): bool
  */
-function isBoolean() {
-	$isBoolean = function ($value) {
-		return is_bool($value);
-	};
-
-	return curry($isBoolean);
+function isBoolean(): Closure {
+	return fn (mixed $value): bool => is_bool($value);
 }

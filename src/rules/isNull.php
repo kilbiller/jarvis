@@ -1,18 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Jarvis\rules;
 
-use function fphp\curry;
+use Closure;
 
 /**
  * Test if value is null
  *
- * @return bool
+ * @return Closure(mixed): bool
  */
-function isNull() {
-	$isNull = function ($value) {
-		return is_null($value);
-	};
-
-	return curry($isNull);
+function isNull(): Closure {
+	return fn (mixed $value): bool => $value === null;
 }

@@ -1,18 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Jarvis\rules;
 
-use function fphp\curry;
+use Closure;
 
 /**
- * Test if value is in uppercase
+ * Test if value is a string in uppercase
  *
- * @return bool
+ * @return Closure(mixed): bool
  */
-function isUppercase() {
-	$isUppercase = function ($value) {
-		return $value === strtoupper($value);
-	};
-
-	return curry($isUppercase);
+function isUppercase(): Closure {
+	return fn (mixed $value): bool => is_string($value) && $value === strtoupper($value);
 }

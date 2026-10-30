@@ -1,20 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Jarvis\rules;
 
-use function fphp\curry;
+use Closure;
 
 /**
- * Test if value is between minimum and maximum
+ * Test if value is a number between minimum and maximum (inclusive)
  *
- * @param int $min minimum
- * @param int $max maximum
- * @return bool
+ * @param int|float $min minimum
+ * @param int|float $max maximum
+ * @return Closure(mixed): bool
  */
-function between($min, $max) {
-	$between = function ($min, $max, $value) {
-		return $min <= $value && $value <= $max;
-	};
-
-	return curry($between)($min, $max);
+function between(int|float $min, int|float $max): Closure {
+	return fn (mixed $value): bool => is_numeric($value) && $min <= $value && $value <= $max;
 }

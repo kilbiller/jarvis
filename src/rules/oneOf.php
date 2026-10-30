@@ -1,17 +1,19 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Jarvis\rules;
 
-use function fphp\curry;
+use Closure;
 
 /**
- * Test if at least one of the conditions returns true 
+ * Test if at least one of the functions returns true
  *
- * @param {...callable} $functions
- * @return bool
+ * @param callable ...$functions Validation functions receiving the value and the whole data
+ * @return Closure(mixed, mixed=): bool
  */
-function oneOf(...$functions) {
-	$oneOf = function ($functions, $value, $data) {
+function oneOf(callable ...$functions): Closure {
+	return function (mixed $value, mixed $data = null) use ($functions): bool {
 		foreach ($functions as $function) {
 			if ($function($value, $data)) {
 				return true;
@@ -20,6 +22,4 @@ function oneOf(...$functions) {
 
 		return false;
 	};
-
-	return curry($oneOf)($functions);
 }

@@ -1,18 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Jarvis\rules;
 
-use function fphp\curry;
+use Closure;
 
 /**
  * Test if value is number-like
  *
- * @return bool
+ * @return Closure(mixed): bool
  */
-function isNumber() {
-	$isNumber = function ($value) {
-		return is_numeric($value);
-	};
-
-	return curry($isNumber);
+function isNumber(): Closure {
+	return fn (mixed $value): bool => is_numeric($value);
 }

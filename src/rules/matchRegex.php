@@ -1,20 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Jarvis\rules;
 
-use function fphp\curry;
-use DateTime;
+use Closure;
 
 /**
- * Test if value match a regex
+ * Test if value matches a regex
  *
  * @param string $regex Regex to validate against
- * @return bool
+ * @return Closure(mixed): bool
  */
-function matchRegex($regex) {
-	$matchRegex = function ($regex, $value) {
-    	return preg_match($regex, $value) === 1;
-	};
-
-	return curry($matchRegex)($regex);
+function matchRegex(string $regex): Closure {
+	return fn (mixed $value): bool => ($value === null || is_scalar($value))
+		&& preg_match($regex, (string) $value) === 1;
 }

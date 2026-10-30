@@ -1,11 +1,10 @@
 # Jarvis
 
-[![CircleCI](https://circleci.com/gh/kilbiller/jarvis.svg?style=shield&circle-token=c8ce445694b31462f5a5f5e3de43125e6c7fd87b)](https://circleci.com/gh/kilbiller/jarvis)
-[![codecov](https://codecov.io/gh/kilbiller/jarvis/branch/master/graph/badge.svg)](https://codecov.io/gh/kilbiller/jarvis)
+[![CI](https://github.com/kilbiller/jarvis/actions/workflows/ci.yml/badge.svg)](https://github.com/kilbiller/jarvis/actions/workflows/ci.yml)
 
 A simple but powerful way to validate data in PHP.
 
-Requires php >= 7.0
+Requires php >= 8.3
 
 ## Why ?
 
@@ -23,15 +22,18 @@ I couldn't find anything that satisfied these requirements so I made Jarvis.
 ### Validator
 
 ```
-->addRule($key: string, $validationFunction: Function | [$validationFunction: Function], $message: string): void
-$key: Can be nested (i.e. 'user.firstname').
-$validationFunction: Can accept two parameter: the value corresponding to the key currently validated and the whole array. Should return a boolean.
-$message: The error message, ${key} will be replaced by the key. Default message is : '${key} is not valid.'
+->addRule(string $key, callable|array $rule, string $message = '${key} is not valid.'): static
+$key: Can be nested (i.e. 'user.firstname'). Throws an InvalidArgumentException if empty.
+$rule: A validation function or an array of validation functions. Each one receives the value corresponding to the key currently validated and the whole data, and should return a boolean.
+$message: The error message, ${key} will be replaced by the key.
 
-->validate($dataToValidate: array): boolean
+->addOptionalRule(string $key, callable|array $rule, string $message = '${key} is not valid.'): static
+Same as addRule, but the rule is skipped when the value is missing (null).
+
+->validate(array|ArrayAccess $data): bool
 
 ->getErrors(): array
-->getErrors($dataToValidate: array): array
+->getErrors(array|ArrayAccess $data): array // validates $data first
 ```
 
 ## Example
@@ -44,11 +46,9 @@ $data = ['age' => 45, 'firstname' => 'Jonathan', 'lastname' => 'Blow'];
 $data2 = ['age' => 53, 'firstname' => 'Johnny', 'lastname' => 'Depp'];
 
 $validator = (new Validator())
-->addRule('age', between(15, 48));
-->addRule('firstname', function ($firstname) {
-	return $firstname === 'Jonathan';
-}, '${key} is not Jonathan.');
-->addRule('lastname', [noWhiteSpace(), lengthBetween(0, 50)]),
+	->addRule('age', between(15, 48))
+	->addRule('firstname', fn ($firstname) => $firstname === 'Jonathan', '${key} is not Jonathan.')
+	->addRule('lastname', [noWhiteSpace(), lengthBetween(0, 50)]);
 
 $validator->validate($data); // -> true
 $validator->getErrors(); // -> []
@@ -76,19 +76,19 @@ $validator->getErrors(); // -> ['age' => 'age is not valid.', 'firstname' => 'fi
 
 ### Pro tips
 
-There is two way to apply muliple validation rules for a single key :
+There are two ways to apply multiple validation rules for a single key :
 
 - Use an array of validation functions -> this way you can only use a single error message
 - Call addRule multiple times with the same key -> this way you can be more precise with your error messages
 
-All function are curried so you can built-in rules without any argument rather than '\Jarvis\rules\isNumber'.
+Built-in rules are functions returning a validation closure, so call them even when they take no argument: use `isNumber()` rather than `'\Jarvis\rules\isNumber'`.
 
 ```php
 use Jarvis\Validator;
 use function Jarvis\rules\isNumber;
 
 $validator = (new Validator())
-->addRule('age', isNumber());
+	->addRule('age', isNumber());
 ```
 
 ### Todo
