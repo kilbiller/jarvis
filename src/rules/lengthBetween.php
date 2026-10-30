@@ -1,26 +1,31 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Jarvis\rules;
 
-use function fphp\curry;
+use Closure;
 
 /**
- * Test if value is between minimum and maximum
+ * Test if value length is between minimum and maximum (inclusive)
  *
- * @param int|null $min minimum
+ * @param int|null $min minimum, null to accept any value
  * @param int $max maximum
- * @return bool
+ * @return Closure(mixed): bool
  */
-function lengthBetween($min, $max) {
-	$lengthBetween = function ($min, $max, $value) {
-		// Validate successfully if min is 0 or null
+function lengthBetween(?int $min, int $max): Closure {
+	return function (mixed $value) use ($min, $max): bool {
+		// Validate successfully if min is null
 		if ($min === null) {
 			return true;
 		}
 
-		$length = strlen($value);
+		// A null value has a length of 0
+		if ($value !== null && !is_scalar($value)) {
+			return false;
+		}
+
+		$length = strlen((string) $value);
 		return $min <= $length && $length <= $max;
 	};
-
-	return curry($lengthBetween)($min, $max);
 }

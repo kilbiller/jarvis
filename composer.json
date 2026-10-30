@@ -10,11 +10,10 @@
         }
     ],
     "require": {
-		"php": ">=7.0",
-        "kilbiller/fphp": "^1.0.3"
+		"php": ">=8.3"
 	},
     "require-dev": {
-        "kahlan/kahlan": "^4.7.5"
+        "kahlan/kahlan": "^6.1.3"
     },
 	"autoload": {
         "psr-4": {"Jarvis\\": "src/"},
@@ -37,6 +36,6 @@
     },
 	"scripts": {
 		"test": "kahlan",
-		"test:coverage": "kahlan --coverage=4 --clover=clover.xml"
+		"test:coverage": "kahlan --coverage=4"
 	}
 }

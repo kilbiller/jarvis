@@ -1,18 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Jarvis\rules;
 
-use function fphp\curry;
+use Closure;
 
 /**
  * Test if value is a string
  *
- * @return bool
+ * @return Closure(mixed): bool
  */
-function isString() {
-	$isString = function ($value) {
-		return is_string($value);
-	};
-
-	return curry($isString);
+function isString(): Closure {
+	return fn (mixed $value): bool => is_string($value);
 }

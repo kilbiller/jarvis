@@ -1,7 +1,6 @@
 <?php
 
 use Jarvis\Validator;
-use Jarvis\RuleSet;
 use function Jarvis\rules\{isNumber, between};
 
 describe('Validator', function () {
@@ -118,6 +117,24 @@ describe('Validator', function () {
 
             expect($validator->validate($array))->toBe(false);
         });
+
+		it('should treat nested keys under a non array value as missing', function () {
+			$validator = (new Validator())
+			->addRule('user.firstname', isNumber())
+			->addOptionalRule('user.lastname', isNumber());
+
+			expect($validator->validate(['user' => new stdClass()]))->toBe(false);
+			expect($validator->getErrors())->toBe(['user.firstname' => 'user.firstname is not valid.']);
+		});
+
+		it('should not keep errors from a previous validation', function () {
+			$validator = (new Validator())
+			->addRule('age', isNumber());
+
+			expect($validator->validate(['age' => 'abc']))->toBe(false);
+			expect($validator->validate(['age' => 34]))->toBe(true);
+			expect($validator->getErrors())->toBe([]);
+		});
     });
 
 	describe('getErrors', function () {
@@ -130,6 +147,15 @@ describe('Validator', function () {
             });
 
             expect($validator->getErrors($array))->toBe(['zombie' => 'zombie is not valid.']);
+		});
+
+		it('should also validate an empty array', function () {
+			$validator = (new Validator())
+            ->addRule('zombie', function ($age) {
+                return is_int($age);
+            });
+
+            expect($validator->getErrors([]))->toBe(['zombie' => 'zombie is not valid.']);
 		});
 	});
 });

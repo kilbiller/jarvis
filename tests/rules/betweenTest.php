@@ -40,4 +40,13 @@ describe('between', function () {
 		expect($validator->validate(['age' => 30]))->toBe(true);
 	});
 
+	it('should fail to validate non numeric values', function () {
+		$validator = (new Validator())
+		->addRule('age', between(0, 99));
+
+		expect($validator->validate(['age' => true]))->toBe(false);
+		expect($validator->validate(['age' => '1a']))->toBe(false);
+		expect($validator->validate(['age' => new stdClass()]))->toBe(false);
+	});
+
 });
